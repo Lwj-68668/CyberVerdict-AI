@@ -1,38 +1,114 @@
-# Cyber Court
+# CyberVerdict-AI
 
-Cyber Court is a Next.js prototype for analyzing chat disputes with an AI model.
-It accepts a pasted conversation, asks a model for a structured verdict, and renders
-an interactive result view with a score split, key sentence, verdict text, and shareable poster.
+CyberVerdict-AI is a Next.js web app that turns messy chat disputes into a structured AI verdict.
+Users can paste a conversation, run an analysis, and get a result with score split, summary, key points,
+logic labels, verdict text, recent local history, and a shareable poster.
 
-## Current status
+## Features
 
-This repository is being upgraded from a single-page demo into a more production-ready product baseline.
-The current phase focuses on:
+- Chat dispute analyzer with structured verdict output
+- Result summary, score split, key sentence, key points, and logic flaw tags
+- Poster generation for sharing the analysis result
+- Local recent-history view in the browser
+- Development-only API settings modal for testing different model providers
+- Static guide and privacy pages
 
-- fixing corrupted copy and metadata
-- separating the main page into smaller UI stages
-- hardening the `/api/verdict` route with request and response validation
-- moving API key entry into an explicitly development-only path
+## Tech Stack
 
-## Local development
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- ECharts
+- OpenAI-compatible API client
 
-1. Install dependencies.
-2. Configure `.env.local` with a provider key and model.
-3. Start the app:
+## Project Structure
+
+```text
+app/
+  api/verdict/          AI verdict route
+  components/           UI components
+  components/home/      landing/analyzer stage components
+  guide/                usage guide page
+  privacy/              privacy page
+  types/                shared type definitions
+docs/
+  product-optimization-plan.md
+```
+
+## Getting Started
+
+### 1. Install dependencies
+
+```bash
+pnpm install
+```
+
+If you use npm:
+
+```bash
+npm install
+```
+
+### 2. Configure environment variables
+
+Create or update `.env.local`:
+
+```bash
+OPENAI_API_KEY=your-key
+OPENAI_BASE_URL=https://api.deepseek.com
+AI_MODEL=deepseek-chat
+```
+
+Available variables:
+
+- `OPENAI_API_KEY`: API key used by the server route
+- `OPENAI_BASE_URL`: OpenAI-compatible provider base URL
+- `AI_MODEL`: model name
+
+### 3. Run the project
 
 ```bash
 pnpm dev
 ```
 
-4. Open `http://localhost:3000`.
+Then open:
 
-## Environment variables
+```text
+http://localhost:3000
+```
 
-- `OPENAI_API_KEY`: provider API key used by the server route
-- `OPENAI_BASE_URL`: provider-compatible base URL
-- `AI_MODEL`: model name to call
+## Available Scripts
+
+```bash
+pnpm dev
+pnpm build
+pnpm start
+pnpm lint
+```
 
 ## Notes
 
-- The in-app API settings modal is for local debugging only.
+- The in-app API settings modal is intended for local debugging only.
 - A real production deployment should keep provider credentials on the server.
+- Browser local storage is used for recent analysis history in the current version.
+
+## Roadmap
+
+The project is being upgraded from a demo into a more product-ready application.
+Planned work includes:
+
+- better UI polish and information hierarchy
+- safer backend model access patterns
+- persistent history and service-side storage
+- authentication, rate limiting, and monitoring
+
+See:
+
+- [`docs/product-optimization-plan.md`](./docs/product-optimization-plan.md)
+
+## License
+
+No license has been added yet. If you want this repository to be reusable by others,
+add an explicit license file.
