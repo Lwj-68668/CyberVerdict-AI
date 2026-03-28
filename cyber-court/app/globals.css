@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --red: #e63946;
+  --blue: #1d3557;
+  --blue-light: #4d8bc0;
+  --gold: #f4d03f;
+  --bg-dark: #050912;
+  --bg-card: #101825;
+  --text-primary: #eef2f7;
+  --text-secondary: #b7c2d3;
+  --text-muted: #7f8a9d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(32, 54, 87, 0.28), transparent 36%),
+    radial-gradient(circle at 20% 20%, rgba(230, 57, 70, 0.1), transparent 25%),
+    linear-gradient(180deg, #050912 0%, #07101b 48%, #050912 100%);
+  color: var(--text-primary);
+  font-family:
+    "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 92%);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(244, 208, 63, 0.35);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08111d;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(125, 151, 184, 0.5);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
